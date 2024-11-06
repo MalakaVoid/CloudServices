@@ -1,7 +1,7 @@
-ERROR_500_TEXT = 'Что то пошло не так!'
+ERROR_500_TEXT = 'Something went wrong'
 USER_ALREADY_EXISTS = {
-    'message': 'Пользователь с таким email уже существует!'
+    'message': 'User already exists'
 }
 USER_NOT_FOUNDED = {
-    'message': 'Пользователь с данным id не найден'
+    'message': 'User not founded'
 }

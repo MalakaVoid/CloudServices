@@ -5,6 +5,12 @@ from app.utils import internal_error_response, is_user_exist, make_user_id_cache
 from app.constants import USER_ALREADY_EXISTS, USER_NOT_FOUNDED
 
 
+@app.get('/')
+def main_page():
+    """Main page route"""
+    return "Hello World!"
+
+
 @app.get('/users')
 def get_users():
     """Get all users from database"""
@@ -41,7 +47,7 @@ def create_user():
     except Exception as err:
         return internal_error_response(err)
 
-    return {'message': f'User with id = {new_user.id} created successfully'}
+    return {'message': 'User created successfully', 'user_id': new_user.id}, 200
 
 
 @app.put('/users/<int:user_id>')
@@ -54,8 +60,12 @@ def update_user(user_id):
         return USER_NOT_FOUNDED, 404
 
     try:
-        user.username = data.get('username', user.username)
-        user.email = data.get('email', user.email)
+        if 'username' in data and data['username']:
+            user.username = data['username']
+
+        if 'email' in data and data['email']:
+            user.email = data['email']
+
         db.session.commit()
     except Exception as err:
         return internal_error_response(err)
