@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 5000
 
-CMD ["python", "app.py"]
-
-CMD ["pytest"]
+CMD ["python", "main.py"]

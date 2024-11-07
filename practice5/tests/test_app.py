@@ -1,5 +1,5 @@
 import pytest
-from app import app
+from main import app
 from .shemes import UsersResponse
 from .utils import create_user, mock_email, mock_username, delete_user, validate_json, update_user
 
@@ -27,7 +27,7 @@ def test_home_page(client):
     assert response.get_data(as_text=True) == "Hello World!"
 
 
-def test_get_users_response(client):
+def test_get_users_response(client, new_user_id):
     """Test get all users"""
     response = client.get('/users')
     assert response.status_code == 200
