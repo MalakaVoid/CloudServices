@@ -1,7 +1,5 @@
-from app.constants import ERROR_500_TEXT, USER_ALREADY_EXISTS
-from app import db
+from app.constants import ERROR_500_TEXT
 from app.models import User
-from flask import request
 
 
 def make_user_id_cache_key(*args, **kwargs):
